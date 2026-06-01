@@ -1,4 +1,4 @@
-#! /usr/local/bin/ruby18
+#!/usr/bin/env ruby
 # Copyright (c) 2006-2007 rubikitch <rubikitch@ruby-lang.org>
 #
 # Use and distribution subject to the terms of the Ruby license.
@@ -154,15 +154,15 @@ require 'tempfile'
 temp = Tempfile.new "rbtest"
 test_script_filename = temp.path
 
-temp.puts "#!/usr/bin/ruby18"
+temp.puts "#!/usr/bin/ruby"
 temp.flush
-assert_equal "/usr/bin/ruby18 #{test_script_filename} -v", execute_test_script_command(test_script_filename, parse_argv!(["a0.rb", "-v"]))
+assert_equal "/usr/bin/ruby #{test_script_filename} -v", execute_test_script_command(test_script_filename, parse_argv!(["a0.rb", "-v"]))
 
 temp.rewind
 temp.puts "class XX"
 temp.flush
 assert_equal "ruby #{test_script_filename} ", execute_test_script_command(test_script_filename, parse_argv!(["a0.rb"]))
-assert_equal "ruby18 #{test_script_filename} ", execute_test_script_command(test_script_filename, parse_argv!(["-S", "ruby18", "a0.rb"]))
+assert_equal "ruby #{test_script_filename} ", execute_test_script_command(test_script_filename, parse_argv!(["-S", "ruby", "a0.rb"]))
 
 =end
 

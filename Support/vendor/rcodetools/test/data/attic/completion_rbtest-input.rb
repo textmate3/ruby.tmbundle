@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby18
+#!/usr/bin/env ruby
 =begin test_bar
 assert_equal "BAR", bar("bar")
 =end

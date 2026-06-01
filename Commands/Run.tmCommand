@@ -7,7 +7,7 @@
 	<key>beforeRunningCommand</key>
 	<string>saveModifiedFiles</string>
 	<key>command</key>
-	<string>#!/usr/bin/env ruby18 -KU
+	<string>#!/usr/bin/env ruby
 ENV['RUBYLIB'] = "#{ENV['TM_BUNDLE_SUPPORT']}/RubyMate"
 require "#{ENV['TM_BUNDLE_SUPPORT']}/RubyMate/run_script.rb"
 </string>

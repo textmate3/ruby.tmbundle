@@ -5,7 +5,7 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/usr/bin/env ruby18 -KU
+	<string>#!/usr/bin/env ruby
 # encoding:  UTF-8
 
 require "rexml/text"

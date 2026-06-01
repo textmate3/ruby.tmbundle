@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby18 -wKU
+#!/usr/bin/env ruby -w
 require "#{ENV['TM_SUPPORT_PATH']}/lib/tm/htmloutput.rb"
 require "shellwords"
 
