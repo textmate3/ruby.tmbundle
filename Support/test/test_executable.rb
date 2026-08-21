@@ -5,10 +5,6 @@ require 'shellwords'
 require 'tmpdir'
 require 'test/unit'
 
-def __dir__
-  File.dirname(__FILE__)
-end
-
 require "#{__dir__}/../lib/executable"
 
 class TestExecutableFind < Test::Unit::TestCase
