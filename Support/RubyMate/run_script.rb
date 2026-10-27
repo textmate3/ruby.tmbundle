@@ -43,7 +43,11 @@ end
 is_test_script = !(ENV["TM_FILEPATH"].match(/(?:\b|_)(?:tc|ts|test)(?:\b|_)/).nil? and
   File.read(ENV["TM_FILEPATH"]).match(/\brequire\b.+(?:test\/unit|test_helper|minitest)/).nil?)
 
-cmd = [ENV['TM_RUBY'] || 'ruby', '-rcatch_exception']
+# The person's own code runs on the Ruby their project pins, TM_PROJECT_RUBY,
+# which TextMate resolves from the project's .ruby-version or .tool-versions.
+# TM_RUBY is the Ruby bundle commands run on, and the fallback for a project
+# that pins nothing.
+cmd = [ENV['TM_PROJECT_RUBY'] || ENV['TM_RUBY'] || 'ruby', '-rcatch_exception']
 
 if is_test_script and not ENV['TM_FILE_IS_UNTITLED']
   path_ary = ENV['TM_FILEPATH'].split("/")
@@ -96,7 +100,7 @@ def actual_path_name(path)
 end
 
 TextMate::Executor.run( cmd, :version_args => ["--version"],
-                             :use_hashbang => !ENV.has_key?('TM_RUBY'),
+                             :use_hashbang => !(ENV.has_key?('TM_PROJECT_RUBY') || ENV.has_key?('TM_RUBY')),
                              :create_error_pipe => true,
                              :script_args  => args ) do |line, type|
   if is_test_script and type == :out

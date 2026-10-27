@@ -13,7 +13,7 @@
 # if iTerm is open or if TM_TERMINAL is set to iTerm then use iTerm
 # otherwise default to Terminal.app since that is standard.
 TP=${TM_TERMINAL:=Terminal}
-TPY=${TM_RUBY:=ruby}
+TPY=${TM_PROJECT_RUBY:-${TM_RUBY:-ruby}}
 
 esc () {
 STR="$1" ruby &lt;&lt;"RUBY"
